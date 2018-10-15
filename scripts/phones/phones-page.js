@@ -1,4 +1,5 @@
 import PhoneCatalog from './components/phone-catalog.js';
+import PhoneService from './services/phone-service.js';
 
 export default class PhonesPage {
   constructor({ element }) {
@@ -7,8 +8,9 @@ export default class PhonesPage {
     this._render();
 
     new PhoneCatalog({
-      element: this._element.querySelector('[data-component="phone-catalog"]')
-    })
+      element: this._element.querySelector('[data-component="phone-catalog"]'),
+      phones: PhoneService.getPhones(),
+    });
   }
 
   _render() {
