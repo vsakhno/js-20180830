@@ -1,8 +1,9 @@
-'use strict'
+import Component from '../../component.js'
 
-export default class PhoneCatalog {
+export default class PhoneCatalog extends Component {
   constructor({ element, phones, onPhoneSelected }) {
-    this._element = element;
+    super({ element });
+
     this._phones = phones;
     this._onPhoneSelected = onPhoneSelected;
 
