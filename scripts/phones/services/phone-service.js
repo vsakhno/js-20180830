@@ -154,7 +154,6 @@ const phonesFromServer = [
   }
 ]
 
-
 const PhoneService = {
   getPhones() {
     return phonesFromServer;
