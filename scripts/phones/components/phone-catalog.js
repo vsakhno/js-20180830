@@ -1,49 +1,48 @@
 import Component from '../../component.js'
 
 export default class PhoneCatalog extends Component {
-  constructor({ element, phones, onPhoneSelected }) {
+  constructor({ element }) {
     super({ element });
 
-    this._phones = phones;
-    this._onPhoneSelected = onPhoneSelected;
+    this._on('click', 'phone-details-link', (event) => {
+      let phoneElement = event.target.closest('[data-element="phone"]');
 
-    this._render();
+      this.emit('phoneSelected', phoneElement.dataset.phoneId);
+    });
 
-    this._element.addEventListener('click', (event) => {
-      this._onPhoneClick(event);
+    this._on('click', 'add-button', (event) => {
+      let phoneElement = event.target.closest('[data-element="phone"]');
+
+      this.emit('add', phoneElement.dataset.phoneId);
     });
   }
 
-  _onPhoneClick (event) {
-    let phoneElement = event.target.closest('[data-element="phone"]');
+  show(phones) {
+    this._phones = phones;
+    this._render();
 
-    if (!phoneElement) {
-      return;
-    }
-
-    this._onPhoneSelected(phoneElement.dataset.phoneId)
+    super.show();
   }
 
   _render() {
     this._element.innerHTML = `
       <ul class="phones">
         ${ this._phones.map(phone => `
-          <li
-            class="thumbnail"
-            data-element="phone"
-            data-phone-id="${ phone.id }"
-          >
-            <a href="#!/phones/${ phone.id }" class="thumb">
+          <li class="thumbnail" data-element="phone" data-phone-id="${ phone.id }">
+            <a href="#!/phones/${ phone.id }" class="thumb" data-element="phone-details-link">
               <img alt="${ phone.name }" src="${ phone.imageUrl }">
             </a>
   
             <div class="phones__btn-buy-wrapper">
-              <a class="btn btn-success">
-                Add
+              <a class="btn btn-success" data-element="add-button">
+                В корзину
               </a>
             </div>
   
-            <a href="#!/phones/${ phone.id }">${ phone.name }</a>
+            <a href="#!/phones/${ phone.id }" data-element="phone-details-link">
+              ${ phone.name }
+            </a>
+            
             <p>${ phone.snippet }</p>
           </li>
         `).join('') }

@@ -1,0 +1,36 @@
+{
+  "name": "js-20180830",
+  "version": "1.0.0",
+  "description": "You can use the [editor on GitHub](https://github.com/mgrinko/js-20180830/edit/gh-pages/README.md) to maintain and preview the content for your website in Markdown files.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node server.js",
+    "build": "./node_modules/.bin/webpack",
+    "start": "./node_modules/.bin/webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vsakhno/js-20180830.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vsakhno/js-20180830/issues"
+  },
+  "homepage": "https://github.com/vsakhno/js-20180830#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.5",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {
+    "node-static": "^0.7.11",
+    "webpack-dev-server": "^3.1.10"
+  }
+
+}
